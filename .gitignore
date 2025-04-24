@@ -1,0 +1,24 @@
+# 🌱 Ignore all .env files in any folder
+.env
+**/.env
+.env.local
+**/.env.local
+
+# 📦 Ignore node_modules in any folder
+node_modules/
+**/node_modules/
+
+# 🏗️ Ignore build outputs from admin & frontend
+admin/build/
+frontend/build/
+
+# 🧱 Optional: ignore any generic build, dist, cache folders
+dist/
+.cache/
+build/
+
+# 🍎 macOS system file
+.DS_Store
+
+# 🪵 Log files (npm only)
+npm-debug.log*
