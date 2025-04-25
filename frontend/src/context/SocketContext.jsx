@@ -10,7 +10,7 @@ export const SocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const socketIo = io('http://localhost:4000');
+    const socketIo = io('https://curapoints-backend.onrender.com');
     setSocket(socketIo);
 
     return () => socketIo.disconnect();
