@@ -10,7 +10,7 @@ const AdminBlogs = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/api/blogs");
+        const res = await axios.get("https://curapoints-backend.onrender.com/api/blogs");
         setBlogs(res.data);
         setLoading(false);
       } catch (err) {
