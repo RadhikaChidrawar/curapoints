@@ -17,7 +17,7 @@ const EditBlogPage = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/blog/${id}`);
+        const response = await axios.get(`https://curapoints-backend.onrender.com/api/blog/${id}`);
         setBlog(response.data);
         setLoading(false);
       } catch (error) {
