@@ -14,7 +14,7 @@ const BlogDetail = () => {
     const fetchBlog = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`http://localhost:4000/api/blog/${id}`);
+        const res = await axios.get(`https://curapoints-backend.onrender.com/api/blog/${id}`);
         if (!res.data) {
           throw new Error("Blog not found");
         }
