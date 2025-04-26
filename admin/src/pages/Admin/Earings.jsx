@@ -121,7 +121,7 @@ const Earings = () => {
   return (
     <div className="w-full max-w-6xl m-5">
       <div className="flex justify-between items-center mb-4">
-        <p className="text-lg font-medium">Appointments Summary</p>
+        <p className="text-lg font-medium">Appointments Earings</p>
         <div className="flex gap-3">
           <select 
             value={filter}
