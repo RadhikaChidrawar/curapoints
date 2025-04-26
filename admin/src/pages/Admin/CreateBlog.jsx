@@ -24,7 +24,7 @@ const BlogForm = () => {
     if (id) {
       setLoading(true);
       axios
-        .get(`http://localhost:4000/api/blog/${id}`)
+        .get(`https://curapoints-backend.onrender.com/api/blog/${id}`)
         .then((res) => {
           setFormData(res.data);
           if (res.data.image) setImagePreview(res.data.image);
