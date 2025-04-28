@@ -1,5 +1,5 @@
 import express from 'express';
-import { addDoctor, adminDashboard, allDoctors, appointmentCancel, appointmentsAdmin, loginAdmin, deleteDoctor } from '../controllers/adminController.js'; // Include the `.js` extension if using ESM
+import { addDoctor, adminDashboard, allDoctors, appointmentCancel, appointmentsAdmin, loginAdmin } from '../controllers/adminController.js'; // Include the `.js` extension if using ESM
 import upload from '../middlewares/multer.js';
 import authAdmin from '../middlewares/authAdmin.js'
 import { changeAvailablity } from '../controllers/doctorController.js';
