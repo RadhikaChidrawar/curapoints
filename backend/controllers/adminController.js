@@ -198,38 +198,38 @@ const adminEarnings = async (req, res) => {
     }
   };
 // API to delete a doctor
-const deleteDoctor = async (req, res) => {
-    try {
-        const { doctorId } = req.body;
+// const deleteDoctor = async (req, res) => {
+//     try {
+//         const { doctorId } = req.body;
 
-        if (!doctorId) {
-            return res.json({ success: false, message: "Doctor ID is required" });
-        }
+//         if (!doctorId) {
+//             return res.json({ success: false, message: "Doctor ID is required" });
+//         }
 
-        // Check if the doctor has any upcoming appointments
-        const hasAppointments = await appointmentModel.exists({
-            doctorId: doctorId,
-            cancelled: false,
-            date: { $gte: new Date() } // Future appointments
-        });
+//         // Check if the doctor has any upcoming appointments
+//         const hasAppointments = await appointmentModel.exists({
+//             doctorId: doctorId,
+//             cancelled: false,
+//             date: { $gte: new Date() } // Future appointments
+//         });
 
-        if (hasAppointments) {
-            return res.json({ 
-                success: false, 
-                message: "Cannot delete doctor with upcoming appointments" 
-            });
-        }
+//         if (hasAppointments) {
+//             return res.json({ 
+//                 success: false, 
+//                 message: "Cannot delete doctor with upcoming appointments" 
+//             });
+//         }
 
-        // Delete the doctor
-        await doctorModel.findByIdAndDelete(doctorId);
+//         // Delete the doctor
+//         await doctorModel.findByIdAndDelete(doctorId);
 
-        res.json({ success: true, message: "Doctor deleted successfully" });
+//         res.json({ success: true, message: "Doctor deleted successfully" });
 
-    } catch (error) {
-        console.log(error);
-        res.json({ success: false, message: error.message });
-    }
-};
+//     } catch (error) {
+//         console.log(error);
+//         res.json({ success: false, message: error.message });
+//     }
+// };
   
 
 export {addDoctor, loginAdmin, allDoctors, appointmentsAdmin, appointmentCancel, adminDashboard, adminEarnings, deleteDoctor}
