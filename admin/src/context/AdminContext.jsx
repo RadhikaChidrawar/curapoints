@@ -92,32 +92,32 @@ const AdminContextProvider = (props) => {
 
     // delete function 
     // Add this deleteDoctor function
-    const deleteDoctor = async (doctorId) => {
-        setIsDeleting(true);
-        try {
-            const { data } = await axios.post(
-                `${backendUrl}/api/admin/delete-doctor`,
-                { doctorId },
-                { headers: { aToken } }
-            );
+    // const deleteDoctor = async (doctorId) => {
+    //     setIsDeleting(true);
+    //     try {
+    //         const { data } = await axios.post(
+    //             `${backendUrl}/api/admin/delete-doctor`,
+    //             { doctorId },
+    //             { headers: { aToken } }
+    //         );
 
-            if (data.success) {
-                toast.success(data.message);
-                // Refresh doctors list after successful deletion
-                await getAllDoctors();
-                // Also refresh dashboard data if needed
-                await getDashData();
-            } else {
-                toast.error(data.message);
-            }
-            return data;
-        } catch (error) {
-            toast.error(error.response?.data?.message || error.message || "Failed to delete doctor");
-            throw error;
-        } finally {
-            setIsDeleting(false);
-        }
-    };
+    //         if (data.success) {
+    //             toast.success(data.message);
+    //             // Refresh doctors list after successful deletion
+    //             await getAllDoctors();
+    //             // Also refresh dashboard data if needed
+    //             await getDashData();
+    //         } else {
+    //             toast.error(data.message);
+    //         }
+    //         return data;
+    //     } catch (error) {
+    //         toast.error(error.response?.data?.message || error.message || "Failed to delete doctor");
+    //         throw error;
+    //     } finally {
+    //         setIsDeleting(false);
+    //     }
+    // };
 
     const value = {
         aToken, setAToken, 
@@ -126,7 +126,7 @@ const AdminContextProvider = (props) => {
         appointments, setAppointments,
         getAllAppointments, cancelAppointment, 
         dashData, getDashData,
-        deleteDoctor, isDeleting
+        // deleteDoctor, isDeleting
     }
 
     return (
