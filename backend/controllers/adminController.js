@@ -232,4 +232,4 @@ const adminEarnings = async (req, res) => {
 // };
   
 
-export {addDoctor, loginAdmin, allDoctors, appointmentsAdmin, appointmentCancel, adminDashboard, adminEarnings, deleteDoctor}
+export {addDoctor, loginAdmin, allDoctors, appointmentsAdmin, appointmentCancel, adminDashboard, adminEarnings }
