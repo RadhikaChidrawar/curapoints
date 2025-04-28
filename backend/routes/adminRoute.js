@@ -11,6 +11,7 @@ adminRouter.post('/login',loginAdmin);
 adminRouter.post('/all-doctors',authAdmin,allDoctors);
 adminRouter.post('/change-availability',authAdmin,changeAvailablity);
 adminRouter.post('/cancel-appointment',authAdmin,appointmentCancel);
+router.post('/delete-doctor', deleteDoctor); //del docter
 // adminRouter.get('/earnings', authAdmin, adminEarnings);
 
 
