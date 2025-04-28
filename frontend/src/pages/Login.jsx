@@ -147,10 +147,9 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
-  const [errors, setErrors] = useState({});
   
   const validateForm = () => {
-    const newErrors = {};
+    const errors = [];
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\d{10}$/;
     const passwordRegex = /^(?=.*[!@#$%^&*])/;
@@ -158,40 +157,41 @@ const Login = () => {
 
     if (state === 'Sign Up') {
       if (!name.trim()) {
-        newErrors.name = 'Name is required';
+        errors.push('Name is required');
       } else if (!nameRegex.test(name)) {
-        newErrors.name = 'Name should be 2-30 characters and contain only letters';
+        errors.push('Name should be 2-30 characters and contain only letters');
       }
     }
 
     if (!phone) {
-      newErrors.phone = 'Phone number is required';
+      errors.push('Phone number is required');
     } else if (!phoneRegex.test(phone)) {
-      newErrors.phone = 'Phone number must be exactly 10 digits';
+      errors.push('Phone number must be exactly 10 digits');
     }
 
     if (!email) {
-      newErrors.email = 'Email is required';
+      errors.push('Email is required');
     } else if (!emailRegex.test(email)) {
-      newErrors.email = 'Please enter a valid email address';
+      errors.push('Please enter a valid email address');
     }
 
     if (!password) {
-      newErrors.password = 'Password is required';
+      errors.push('Password is required');
     } else if (password.length < 8) {
-      newErrors.password = 'Password must be at least 8 characters';
+      errors.push('Password must be at least 8 characters');
     } else if (!passwordRegex.test(password)) {
-      newErrors.password = 'Password must contain at least one special character';
+      errors.push('Password must contain at least one special character');
     }
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    return errors;
   };
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     
-    if (!validateForm()) {
+    const validationErrors = validateForm();
+    if (validationErrors.length > 0) {
+      validationErrors.forEach(error => toast.error(error));
       return;
     }
 
@@ -259,13 +259,12 @@ const Login = () => {
           <div className="w-full">
             <p>Full Name:</p>
             <input
-              className={`border rounded w-full p-2 mt-1 ${errors.name ? 'border-red-500' : 'border-zinc-300'}`}
+              className="border border-zinc-300 rounded w-full p-2 mt-1"
               type="text"
               onChange={(e) => setName(e.target.value)}
               value={name}
               required
             />
-            {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
           </div>
         )}
         
@@ -273,37 +272,34 @@ const Login = () => {
           <p>Phone Number:</p>
           <input 
             type="tel"
-            className={`border rounded w-full p-2 mt-1 ${errors.phone ? 'border-red-500' : 'border-zinc-300'}`}
+            className="border border-zinc-300 rounded w-full p-2 mt-1"
             onChange={handlePhoneChange}
             value={phone}
             required
             maxLength={10}
           />
-          {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
         </div>
         
         <div className="w-full">
           <p>Email:</p>
           <input
-            className={`border rounded w-full p-2 mt-1 ${errors.email ? 'border-red-500' : 'border-zinc-300'}`}
+            className="border border-zinc-300 rounded w-full p-2 mt-1"
             type="email"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             required
           />
-          {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
         </div>
         
         <div className="w-full">
           <p>Password:</p>
           <input
-            className={`border rounded w-full p-2 mt-1 ${errors.password ? 'border-red-500' : 'border-zinc-300'}`}
+            className="border border-zinc-300 rounded w-full p-2 mt-1"
             type="password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             required
           />
-          {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password}</p>}
           {state === "Sign Up" && (
             <p className="text-xs text-gray-500 mt-1">
               Password must be at least 8 characters and contain at least one special character
