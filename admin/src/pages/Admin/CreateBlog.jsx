@@ -103,10 +103,10 @@ const BlogForm = () => {
 
     try {
       if (id) {
-        await axios.put(`http://localhost:4000/api/blog/${id}`, finalData);
+        await axios.put(`https://curapoints-backend.onrender.com/api/blog/${id}`, finalData);
         toast.success("Blog updated successfully!");
       } else {
-        await axios.post("http://localhost:4000/api/blog", finalData);
+        await axios.post("https://curapoints-backend.onrender.com/api/blog", finalData);
         toast.success("Blog created successfully!");
       }
       navigate("/blog-list");
@@ -336,21 +336,6 @@ const BlogForm = () => {
                 </div>
               </div>
             </div>
-
-            {/* SEO Preview Card */}
-            {/* <div className="bg-white rounded-xl shadow-md overflow-hidden">
-              <div className="p-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">SEO Preview</h3>
-                <div className="space-y-2">
-                  <h4 className="text-blue-600 text-lg line-clamp-1">
-                    {formData.title || "Your blog post title"}
-                  </h4>
-                  <p className="text-gray-800 text-sm line-clamp-2">
-                    {formData.description || "Your blog post description"}
-                  </p>
-                </div>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>

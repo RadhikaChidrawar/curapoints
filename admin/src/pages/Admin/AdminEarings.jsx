@@ -6,7 +6,7 @@ const AdminEarnings = () => {
 
   useEffect(() => {
     const fetchEarnings = async () => {
-      const res = await axios.get("http://localhost:PORT/admin/earnings", {
+      const res = await axios.get("https://curapoints-backend.onrender.com/admin/earnings", {
         headers: {
           Authorization: localStorage.getItem("adminToken"),
         },

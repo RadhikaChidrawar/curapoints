@@ -42,7 +42,7 @@ const EditBlogPage = () => {
     e.preventDefault();
 
     try {
-      await axios.put(`http://localhost:4000/api/blog/${id}`, blog);
+      await axios.put(`https://curapoints-backend.onrender.com/api/blog/${id}`, blog);
       toast.success("Blog updated successfully!");
       navigate("/blogs");
     } catch (error) {

@@ -4,7 +4,7 @@ import { assets } from "../../assets/assets";
 import { AppContext } from "../../context/AppContext";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:4000"); // Backend Socket.io URL
+const socket = io("https://curapoints-backend.onrender.com"); // Backend Socket.io URL
 
 const DoctorDashboard = () => {
   const {
@@ -39,7 +39,7 @@ const DoctorDashboard = () => {
 
     socket.on("receiveCall", ({ callLink, patientName }) => {
       console.log(`Incoming call from ${patientName}: ${callLink}`);
-      setIncomingCall({ callLink, patientName }); // ✅ Call data store करा
+      setIncomingCall({ callLink, patientName }); 
   });
 
     socket.on("chatRequest", (message) => {
